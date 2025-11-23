@@ -1,0 +1,104 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Model files (optional - comment out if you want to commit models)
+models/*.h5
+models/*.pkl
+models/*.tf
+models/backup/
+
+# Data (don't commit large datasets)
+data/train/
+data/test/
+data/raw/
+data/*.zip
+
+# Uploads
+uploads/
+uploads/retrain/
+
+# Logs
+*.log
+logs/
+*.out
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker
+.dockerignore
+
+# Environment variables
+.env
+.env.local
+
+# Test results
+results/
+*.csv
+test_results/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Locust
+locust_*.csv
+locust_*.html
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# IDE
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*~
