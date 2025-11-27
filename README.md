@@ -1,10 +1,8 @@
 # Plant Disease Detection ML Pipeline
 
-## 🎥 Video Demo
-[YouTube Demo Link - Insert Your Video Here]
+## Video Demo
+YouTube Demo Link - Insert Your Video Here
 
-## 🌐 Live Demo
-[Deployed Application URL - Insert After Deployment]
 
 ## 📋 Project Description
 
@@ -16,8 +14,9 @@ A complete end-to-end Machine Learning pipeline for plant disease classification
 - Handle concurrent requests with load balancing
 
 **Dataset**: PlantVillage Dataset (subset) - Contains images of healthy and diseased plant leaves across multiple categories.
+From Kaggle: https://www.kaggle.com/datasets/arjuntejaswi/plant-village/data
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 User → UI (Streamlit) → FastAPI Backend → ML Model → Predictions
@@ -27,7 +26,7 @@ User → UI (Streamlit) → FastAPI Backend → ML Model → Predictions
                       Retraining Pipeline
 ```
 
-## 📁 Directory Structure
+## Directory Structure
 
 ```
 plant_disease_detection/
@@ -65,7 +64,7 @@ plant_disease_detection/
     └── retrain/
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -113,7 +112,7 @@ docker-compose up --build
 docker-compose up --scale api=3
 ```
 
-## 📊 Load Testing with Locust
+## Load Testing with Locust
 
 ### Run Load Test
 ```bash
@@ -127,14 +126,7 @@ locust -f locustfile.py --host=http://localhost:8000
 # Configure: Users=100, Spawn rate=10
 ```
 
-### Expected Results
-| Containers | Avg Response Time | RPS | P95 Latency |
-|------------|------------------|-----|-------------|
-| 1          | ~500ms           | 20  | 800ms       |
-| 2          | ~300ms           | 35  | 500ms       |
-| 3          | ~200ms           | 50  | 350ms       |
-
-## 🌥️ Cloud Deployment (AWS)
+## Cloud Deployment (AWS)
 
 ### Deploy to AWS ECS
 ```bash
@@ -148,15 +140,9 @@ aws ecs create-task-definition --cli-input-json file://task-definition.json
 
 # 3. Create ECS Service
 aws ecs create-service --cluster ml-cluster --service-name plant-disease-service --task-definition plant-disease
-```
 
-### Alternative: Deploy to Google Cloud Run
-```bash
-gcloud builds submit --tag gcr.io/PROJECT-ID/plant-disease
-gcloud run deploy --image gcr.io/PROJECT-ID/plant-disease --platform managed
-```
 
-## 🎯 Features
+## Features
 
 ### 1. Model Prediction
 - Upload single plant leaf image
@@ -186,7 +172,7 @@ gcloud run deploy --image gcr.io/PROJECT-ID/plant-disease --platform managed
 - Model version information
 - Last retrain timestamp
 
-## 📈 Model Performance
+## Model Performance
 
 ### Current Model Metrics
 - **Accuracy**: 94.3%
@@ -205,7 +191,7 @@ gcloud run deploy --image gcr.io/PROJECT-ID/plant-disease --platform managed
 - Output Layer (Softmax)
 ```
 
-## 🔧 Configuration
+## Configuration
 
 Edit `config.py` for custom settings:
 ```python
@@ -216,7 +202,7 @@ EPOCHS = 20
 LEARNING_RATE = 0.001
 ```
 
-## 📝 API Endpoints
+## API Endpoints
 
 ### Prediction
 ```bash
@@ -251,7 +237,7 @@ GET /status
 curl "http://localhost:8000/status"
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -273,7 +259,7 @@ BATCH_SIZE = 16
 docker-compose up --build --scale api=1
 ```
 
-## 📚 Technologies Used
+## Technologies Used
 
 - **ML Framework**: TensorFlow/Keras
 - **API**: FastAPI
@@ -283,15 +269,15 @@ docker-compose up --build --scale api=1
 - **Cloud**: AWS ECS / Google Cloud Run
 - **Monitoring**: Prometheus + Grafana (optional)
 
-## 👥 Contributors
+## Contributors
 
-[Your Name] - [Your Email]
+Peace Keza - p.keza@alustudent.com
 
-## 📄 License
+## License
 
 MIT License
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - PlantVillage Dataset
 - TensorFlow Team
