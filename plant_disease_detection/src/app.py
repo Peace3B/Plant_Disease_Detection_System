@@ -138,7 +138,7 @@ def main():
         
         page = st.radio(
             "Select Page",
-            ["🏠 Home", "🔍 Prediction", "📊 Visualizations", "📤 Upload Data", "🔄 Retrain Model", "📈 Monitor"]
+            [" Home", " Prediction", " Visualizations", " Upload Data", " Retrain Model", " Monitor"]
         )
         
         st.markdown("---")
@@ -147,23 +147,23 @@ def main():
         status = get_model_status()
         if status:
             st.subheader("Model Status")
-            st.success("✅ Model Running")
+            st.success(" Model Running")
             st.metric("Total Requests", status.get("total_requests", 0))
             uptime = status.get("uptime_seconds", 0)
             st.metric("Uptime", f"{uptime/3600:.1f} hrs")
     
     # Page routing
-    if page == "🏠 Home":
+    if page == " Home":
         show_home()
-    elif page == "🔍 Prediction":
+    elif page == " Prediction":
         show_prediction()
-    elif page == "📊 Visualizations":
+    elif page == "Visualizations":
         show_visualizations()
-    elif page == "📤 Upload Data":
+    elif page == "Upload Data":
         show_upload()
-    elif page == "🔄 Retrain Model":
+    elif page == "Retrain Model":
         show_retrain()
-    elif page == "📈 Monitor":
+    elif page == " Monitor":
         show_monitor()
 
 def show_home():
@@ -173,13 +173,13 @@ def show_home():
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.info("### 🔍 Predict\nUpload plant images to detect diseases")
+        st.info("###  Predict\nUpload plant images to detect diseases")
     
     with col2:
-        st.info("### 📊 Visualize\nExplore data insights and model performance")
+        st.info("###  Visualize\nExplore data insights and model performance")
     
     with col3:
-        st.info("### 🔄 Retrain\nImprove model with new data")
+        st.info("###  Retrain\nImprove model with new data")
     
     st.markdown("---")
     
@@ -210,12 +210,12 @@ def show_home():
     st.subheader("🌟 Features")
     
     features = [
-        "✅ Real-time disease detection",
-        "✅ Multi-class classification",
-        "✅ Confidence scoring",
-        "✅ Batch processing",
-        "✅ Model retraining capability",
-        "✅ Performance monitoring"
+        " Real-time disease detection",
+        " Multi-class classification",
+        " Confidence scoring",
+        " Batch processing",
+        " Model retraining capability",
+        " Performance monitoring"
     ]
     
     col1, col2 = st.columns(2)
@@ -227,7 +227,7 @@ def show_home():
 
 def show_prediction():
     """Prediction page"""
-    st.header("🔍 Disease Prediction")
+    st.header(" Disease Prediction")
     
     st.write("Upload a plant leaf image to detect diseases")
     
@@ -260,7 +260,7 @@ def show_prediction():
                     
                     if result:
                         # Display results
-                        st.success("✅ Prediction Complete!")
+                        st.success(" Prediction Complete!")
                         
                         # Main prediction
                         predicted_class = result['predicted_class']
@@ -304,11 +304,11 @@ def show_prediction():
                         
                         # Processing time
                         processing_time = result.get('processing_time', 0)
-                        st.info(f"⏱️ Processing time: {processing_time*1000:.0f}ms")
+                        st.info(f" Processing time: {processing_time*1000:.0f}ms")
 
 def show_visualizations():
     """Visualizations page"""
-    st.header("📊 Data Visualizations")
+    st.header(" Data Visualizations")
     
     status = get_model_status()
     
@@ -397,7 +397,7 @@ def show_visualizations():
 
 def show_upload():
     """Upload data page"""
-    st.header("📤 Upload Training Data")
+    st.header(" Upload Training Data")
     
     st.write("""
     Upload new training data to improve the model. Data should be organized in a ZIP file with the following structure:
@@ -422,14 +422,14 @@ def show_upload():
     )
     
     if uploaded_zip is not None:
-        st.info(f"📦 File: {uploaded_zip.name} ({uploaded_zip.size / 1024 / 1024:.2f} MB)")
+        st.info(f" File: {uploaded_zip.name} ({uploaded_zip.size / 1024 / 1024:.2f} MB)")
         
-        if st.button("📤 Upload Data", type="primary", use_container_width=True):
+        if st.button(" Upload Data", type="primary", use_container_width=True):
             with st.spinner("Uploading data..."):
                 result = upload_training_data(uploaded_zip.getvalue())
                 
                 if result:
-                    st.success("✅ Data uploaded successfully!")
+                    st.success(" Data uploaded successfully!")
                     
                     col1, col2, col3 = st.columns(3)
                     with col1:
@@ -445,7 +445,7 @@ def show_upload():
 
 def show_retrain():
     """Retrain model page"""
-    st.header("🔄 Retrain Model")
+    st.header(" Retrain Model")
     
     st.write("Configure and trigger model retraining with uploaded data")
     
@@ -453,7 +453,7 @@ def show_retrain():
     status = get_retrain_status()
     
     if status and status.get('status') == 'running':
-        st.warning("🔄 Retraining is currently in progress...")
+        st.warning(" Retraining is currently in progress...")
         
         progress = status.get('progress', 0)
         st.progress(progress / 100, text=status.get('message', ''))
@@ -475,17 +475,17 @@ def show_retrain():
     st.markdown("---")
     
     # Retrain button
-    if st.button("🚀 Start Retraining", type="primary", use_container_width=True):
+    if st.button(" Start Retraining", type="primary", use_container_width=True):
         result = trigger_retraining(epochs=epochs, batch_size=batch_size)
         
         if result:
-            st.success("✅ Retraining started!")
+            st.success(" Retraining started!")
             st.json(result)
-            st.info("🔄 Retraining is running in the background. Check the Monitor page for status.")
+            st.info(" Retraining is running in the background. Check the Monitor page for status.")
             time.sleep(2)
             st.rerun()
         else:
-            st.error("❌ Failed to start retraining. Make sure you've uploaded training data first.")
+            st.error(" Failed to start retraining. Make sure you've uploaded training data first.")
     
     # Show last retrain status
     if status:
@@ -502,18 +502,18 @@ def show_retrain():
         message = status.get('message', 'No retraining performed yet')
         
         if status_type == 'completed':
-            st.success(f"✅ {message}")
+            st.success(f" {message}")
         elif status_type == 'failed':
-            st.error(f"❌ {message}")
+            st.error(f" {message}")
         else:
-            st.info(f"ℹ️ {message}")
+            st.info(f" {message}")
         
         if 'timestamp' in status:
             st.write(f"Last update: {status['timestamp']}")
 
 def show_monitor():
     """Monitor page"""
-    st.header("📈 System Monitoring")
+    st.header(" System Monitoring")
     
     # Get current status
     status = get_model_status()
@@ -528,7 +528,7 @@ def show_monitor():
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
-        st.metric("Status", "🟢 Running")
+        st.metric("Status", " Running")
     
     with col2:
         uptime = status.get('uptime_seconds', 0)
@@ -560,10 +560,10 @@ def show_monitor():
                 st.write(f"{i}. {cls}")
     
     # Auto-refresh
-    if st.button("🔄 Refresh", use_container_width=True):
+    if st.button(" Refresh", use_container_width=True):
         st.rerun()
     
-    st.info("💡 Tip: This page auto-refreshes every 30 seconds")
+    st.info(" Tip: This page auto-refreshes every 30 seconds")
 
 # Run app
 if __name__ == "__main__":
