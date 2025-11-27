@@ -1,10 +1,10 @@
 # Plant Disease Detection ML Pipeline
 
 ## Video Demo
-YouTube Demo Link - Insert Your Video Here
+YouTube Demo Link - https://www.youtube.com/watch?v=WTyqppva0xo
 
 
-## 📋 Project Description
+## Project Description
 
 A complete end-to-end Machine Learning pipeline for plant disease classification using Convolutional Neural Networks (CNN). The system allows users to:
 - Upload plant leaf images and get disease predictions
@@ -101,6 +101,9 @@ uvicorn src.api:app --host 0.0.0.0 --port 8000
 
 # Terminal 2 - Start UI
 streamlit run src/app.py --server.port 8501
+
+Web UI: Open http://localhost:8000/web/index.html
+API Docs: Open http://localhost:8000/docs
 ```
 
 ### 6. Docker Deployment
@@ -110,6 +113,9 @@ docker-compose up --build
 
 # Scale containers for load testing
 docker-compose up --scale api=3
+
+
+Access the application at http://localhost:8000/web/index.html.
 ```
 
 ## Load Testing with Locust
